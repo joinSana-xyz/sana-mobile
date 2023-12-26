@@ -34,27 +34,28 @@ export default function SignUp({navigation}) {
     return (
         <View style={[styles.container, {flexDirection:'column'}]}>
             <View style={[styles.headerBigBox, {flex:1}]}>
+                <Image style={styles.cloudsTop} source={require('../images/sana-clouds.png')}/>
                 <Image style={styles.logo} source={require('../images/sana-logo.png')}/>
             </View>
             <View style={[styles.signInBigBox, {flex:2}]}>
             <View style={styles.signInSmallBox}>
             <SafeAreaView style={styles.form}>
-                <TextInput style={styles.input}
-                    autoCapitalize="word"
-                    placeholder="first name"
+                <TextInput style={[styles.input, {marginTop: 125}]}
+                    autoCapitalize="words"
+                    placeholder="First Name"
                     autoFocus={true}
                     value={fName}
                     onChangeText={(text) => setFName(text)} 
                 />
-                <View style={styles.hairline} />
+                
                 <TextInput style={styles.input}
-                    autoCapitalize="word"
-                    placeholder="last name"
+                    autoCapitalize="words"
+                    placeholder="Last Name"
                     autoFocus={true}
                     value={lName}
                     onChangeText={(text) => setLName(text)} 
                 />
-                <View style={styles.hairline} />
+                
                 <TextInput style={styles.input}
                     autoCapitalize="none"
                     placeholder="Email Address"
@@ -64,17 +65,17 @@ export default function SignUp({navigation}) {
                     value={email}
                     onChangeText={(text) => setEmail(text)} 
                 />
-                <View style={styles.hairline} />
+                
                 <TextInput style={styles.input}
                     autoCapitalize="none"
-                    placeholder="password"
+                    placeholder="Password"
                     autoCorrect={false}
                     secureTextEntry={true}
                     textContentType = "password"
                     value={password}
                     onChangeText={(text) => setPassword(text)} 
                 />
-                <View style={styles.hairline} />
+                
                 <TextInput style={styles.input}
                     autoCapitalize="none"
                     placeholder="Verification Code"
@@ -82,7 +83,7 @@ export default function SignUp({navigation}) {
                     value={code}
                     onChangeText={(text) => setCode(text)} 
                 />
-                <View style={styles.hairline} />
+                
                 {
                 //<Text style={styles.headerTitle}>Birthday</Text>
                 //<DatePicker date={birthday} onDateChange={setBirthday} />
@@ -90,13 +91,22 @@ export default function SignUp({navigation}) {
                 <TouchableOpacity style={styles.button} onPress={onHandleSignUp}>
                     <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
-                         <Text>Already have an account? 
-                <Text style={{color:"red"}}onPress={() => navigation.navigate("Signin")}> Log In! </Text>
-                </Text>
+                
+                <Text style={{color:"red", alignSelf: "center"}}onPress={() => navigation.navigate("Signin")}> Already have an account? Log In! </Text>
+
             </SafeAreaView>
+
         </View>
+
+            
+
             </View>
+
+            <View style={[styles.headerBigBox, {flex: 1}]}>
+               <Image style={styles.cloudsBottom} source={require('../images/sana-clouds.png')}/>
             </View>
+
+        </View>
     )
 }
 
@@ -124,14 +134,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    hairline: {
-        backgroundColor: '#c3cfe1',
-        height: 2,
-        width: 200,
-        marginBottom: 15,
-    },
     signInSmallBox: {
-        backgroundColor: "white",
         padding:40,
         borderRadius: 10,
         alignItems: 'start',
@@ -142,7 +145,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex:1,
-        backgroundColor: "white",
+        backgroundColor: '#ebf3ff',
     },
     title: {
         fontSize:36,
@@ -170,5 +173,41 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "white",
         fontSize: 18,
+    },
+    cloudsTop: {
+        width: '75%',
+        height: '75%',
+        resizeMode: "contain",
+        left: 175,
+        transform: [{ rotate: '180deg' }]
+    },
+    cloudsBottom: {
+        width: "75%",
+        height: "75%",
+        resizeMode: "contain",
+        top: 30,
+        right: 200
+    },
+    input: {
+        backgroundColor: 'white',
+        borderRadius: 10,
+        borderColor: 'black',
+        width: 350,
+        height: 60,
+        fontSize: 15,
+        margin: 10,
+        padding: 5
+    },
+    button: {
+        backgroundColor: "#6073b7",
+        height: 50,
+        width: 175,
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        margin: 30,
+        padding: 10,
+        color: "white",
     },
 });
