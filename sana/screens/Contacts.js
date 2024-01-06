@@ -63,13 +63,13 @@ export default function Contact({navigation}) {
         <View style={[styles.container, {flexDirection:"column"}]}>
 
             <View style={styles.header}>
-                <View style={{flexDirection:"row", display: "flex", alignItems: "center", width: "100vw", justifyContent: "space-evenly"}}>
+                <View style={{flexDirection:"row", display: "flex", alignItems: "stretch", width: "100vw", justifyContent: "space-evenly"}}>
                     
                     
-                    <Image style={styles.headerLogo} source={require('../images/sana-logo-2.png')}/>
+                    <Image style={[styles.headerLogo, {marginTop: 50, right: 150}]} source={require('../images/sana-logo-2.png')}/>
                     
                     <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-                        <Image style={styles.headerLogo} source={require('../images/settings.png')}/>
+                        <Image style={[styles.headerLogo, {marginTop: 50, left: 150}]} source={require('../images/settings.png')}/>
                     </TouchableOpacity>
                     
                 </View>
@@ -77,10 +77,10 @@ export default function Contact({navigation}) {
 
             <View style={styles.bottom}>
                 <View style={styles.contactList}>
-                    <TouchableOpacity style={styles.item} onPress={() => addPerson()}>
-                      <View style={styles.itemTextBox}>
-                      <Text style={styles.itemText} >{"Add New Friend"}</Text>
-                      </View>
+                    <TouchableOpacity style={[styles.item, {borderWidth: 1}]} onPress={() => addPerson()}>
+                    
+                      <Text style={{fontSize: 25}} >{"Add New Friend"}</Text>
+                    
                     </TouchableOpacity>
                     
                     <TouchableOpacity style={[styles.item, {backgroundColor: "rgba(0,0,0,0.2)"}]} onPress={() => navigation.navigate('Chat', {username: "Global Chat", cid: "hello"})}>
@@ -92,8 +92,9 @@ export default function Contact({navigation}) {
                       data={contacts}
                       renderItem={({item}) => (
                         <View>
-                            <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Chat', {userName: item.username, cid: item.cid})}>
-                                <Text>{item.username}</Text>
+                            <TouchableOpacity style={[styles.item, {borderWidth: 3}]} onPress={() => navigation.navigate('Chat', {userName: item.username, cid: item.cid})}>
+                                <Image style={styles.chatImage} source={require("../images/Chat_Icon.png")}/>
+                                <Text style={{fontSize: 20, alignSelf: "center"}}>{item.username}</Text>
                             </TouchableOpacity>
                         </View>
                       )}
@@ -139,17 +140,17 @@ const styles = StyleSheet.create({
     },
     contactList: {
       flex:1,
-      backgroundColor: "white",
+      backgroundColor: "#ebf3ff",
     },
     homePart: {
       flex:3,
-      backgroundColor: "white",
+      backgroundColor: "#ebf3ff",
     },
     container: {
         flex:1,
         alignItems: 'center', 
         justifyContent: 'center',
-        backgroundColor: "white"
+        backgroundColor: "#ebf3ff"
     },
     title: {
         fontSize:36,
@@ -199,6 +200,12 @@ const styles = StyleSheet.create({
     width: 90 * vw,
     height: 10 * vh,
     marginHorizontal: 5 * vw,
+    margin: 25
+  },
+  chatImage: {
+    height: 50,
+    width: 50,
+    right: 125,
   },
 });
 /*

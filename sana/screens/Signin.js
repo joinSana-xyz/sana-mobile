@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, Button, TextInput, Image, SafeAreaView, Touchabl
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 
+
 export default function SignIn({navigation}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,6 +20,7 @@ export default function SignIn({navigation}) {
                 .catch((err) => Alert.alert("Login error", err.message));
         }
     };
+    
     return (
         <View style={[styles.container, {flexDirection:'column'}]}>
 
